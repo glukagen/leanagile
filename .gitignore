@@ -1,0 +1,5 @@
+*.pyc
+src
+.tm_properties
+local_settings.*
+.tmp_*

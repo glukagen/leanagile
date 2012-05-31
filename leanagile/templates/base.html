@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{{ STATIC_URL }}assets/css/style.css" rel="stylesheet" >
+		<script src="{{ STATIC_URL }}assets/js/jquery.js"></script>
+    	<title>Lean Agile Learning Machine</title>
+		<script>
+			$(function(){
+				$('#btn_add').click(function(){
+					console.log('add')
+				})
+				
+				$('#btn_remove').click(function(){
+					
+				})
+			})		
+		</script>
+		{% block head %}
+		
+        {% endblock %}
+    </head>
+	<body>
+		<div>
+			<table id="nav_box" width="100%">
+				<tr>
+					<td><input id="search" value="Search..."/></td>
+					<td>
+						<a href="/student/add"><button id="btn_add"> + </button></a>
+						<button id="btn_remove"> - </button>
+						<button id="btn_prev"> &lt; </button>
+						<button id="btn_next"> &gt; </button>
+						<button id="btn_first"> &lt;&lt; </button>
+						<button id="btn_last"> &gt;&gt; </button>
+					</td>
+				</tr>
+			</table>
+			<div id="container"  class="right" >
+				<table width="100%"><tr><td align="center">
+					{% block content %} {% endblock %}
+				</td></tr></table>
+			</div>
+		</div>
+		{% block footer %}
+			{% include "footer.html" %}
+		{% endblock %}
+	</body>
+</html>

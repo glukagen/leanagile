@@ -1,0 +1,24 @@
+body{
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;	
+}
+
+textarea{
+	resize:none;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+
+#container{
+	width:90%;
+}
+
+#nav_box{
+	border:1px solid black;
+}
+
