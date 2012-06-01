@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script>
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="left">
+	<div class="border_box with_padding">
+		<b>{{ student.user.get_full_name }}</b>
+	</div>
+	<table id="profile_details">
+		<tr>
+			<td rowspan="2"><img src="{{ student.avatar }}" width="200" /></td><td><b>Specialities:</b></td>
+			<td><div class="border_box with_padding" >{{ student.specialities }}</div></td>
+		</tr>
+		<tr>
+			<td><b>About Me:</b></td>
+			<td><div class="border_box with_padding" >{{ student.about_me }}</div></td>
+		</tr>
+	</table>
+</div>
+<div class="right border_box with_padding" style="width:50%; height:200px">
+	TBD
+</div>
+
+{% endblock %}

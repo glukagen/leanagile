@@ -22,3 +22,18 @@ textarea{
 	border:1px solid black;
 }
 
+#profile_details tr{
+	height: 100px;
+}
+
+#profile_details td{
+	padding:10px;
+}
+
+.border_box{
+	border:1px solid black
+}
+
+.with_padding{
+	padding:10px;
+}
