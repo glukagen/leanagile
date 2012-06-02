@@ -3,3 +3,6 @@ src
 .tm_properties
 local_settings.*
 .tmp_*
+media
+
+

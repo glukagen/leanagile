@@ -37,3 +37,7 @@ textarea{
 .with_padding{
 	padding:10px;
 }
+
+#skills_table td{
+	padding:5px;
+}

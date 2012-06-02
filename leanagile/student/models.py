@@ -15,3 +15,7 @@ class Student(models.Model):
             return "%s%s" % (settings.MEDIA_URL, self.image.name)
         else:
             return '%sassets/img/user-avatar.jpg' % settings.STATIC_URL
+        
+    
+    def __str__(self):
+        return user.get_full_name()

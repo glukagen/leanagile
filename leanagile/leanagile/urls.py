@@ -8,6 +8,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^student/', include('student.urls')),
+    url(r'^skill/', include('skill.urls')),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('core.urls')),    
 
 ) + staticfiles_urlpatterns()

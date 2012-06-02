@@ -2,28 +2,72 @@
 
 {% block head %}
 <script>
-
+	var imgs = [
+		'{{STATIC_URL}}assets/img/n_circle.png',
+		'{{STATIC_URL}}assets/img/i_circle.png',
+		'{{STATIC_URL}}assets/img/d_circle.png',
+		'{{STATIC_URL}}assets/img/n_circle.png'
+	],
+	csrf_token = '{{ csrf_token }}',
+	student_id = '{{ student.id }}'		
+	
+	$(function(){
+		$('#btn_next').click(function(){
+			document.location.href = '/student/' + student_id + '/next/' 
+		})
+		$('#btn_prev').click(function(){
+			document.location.href = '/student/' + student_id + '/prev/' 
+		})
+		
+		$('.skill_circle').click(function(){
+			var index = $.inArray($(this).find('img').attr('src'), imgs)
+			$(this).find('img').attr('src', imgs[index+1])
+			
+			$.post('/skill/change_status/' + $(this).attr('status_id') + '/', {csrfmiddlewaretoken:csrf_token}, function(o){
+				console.log(o)
+			})
+		})
+	})
 </script>
 {% endblock %}
 
 {% block content %}
-<div class="left">
-	<div class="border_box with_padding">
-		<b>{{ student.user.get_full_name }}</b>
+<div style="height:300px;">
+	<div class="left">
+		<div class="border_box with_padding">
+			<b>{{ student.user.get_full_name }}</b>
+		</div>
+		<table id="profile_details">
+			<tr>
+				<td rowspan="2"><img src="{{ student.avatar }}" width="200" /></td><td><b>Specialities:</b></td>
+				<td><div class="border_box with_padding" >{{ student.specialities }}</div></td>
+			</tr>
+			<tr>
+				<td><b>About Me:</b></td>
+				<td><div class="border_box with_padding" >{{ student.about_me }}</div></td>
+			</tr>
+		</table>
 	</div>
-	<table id="profile_details">
-		<tr>
-			<td rowspan="2"><img src="{{ student.avatar }}" width="200" /></td><td><b>Specialities:</b></td>
-			<td><div class="border_box with_padding" >{{ student.specialities }}</div></td>
-		</tr>
-		<tr>
-			<td><b>About Me:</b></td>
-			<td><div class="border_box with_padding" >{{ student.about_me }}</div></td>
-		</tr>
-	</table>
+	<div class="right border_box with_padding" style="width:50%; height:200px">
+		TBD
 </div>
-<div class="right border_box with_padding" style="width:50%; height:200px">
-	TBD
+</div>
+<div>
+	{% for category in categories %}
+		<h3 align="center">{{ category.name }}</h3>
+		<table id="skills_table">
+		{% for track in category.our_tracks %}
+				<tr><td><b>{{ track.name }}</b>
+				{% for skill in track.our_skills %}
+					<td valign="top" align="center">
+						<a href="javascript:;" class="skill_circle" status_id="{{ skill.status_id }}"><img src="{{STATIC_URL}}assets/img/{{ skill.status }}_circle.png" /></a><br />
+						<span>{{ skill.name }}</span>
+					</td>
+				{% endfor %}
+				</tr>
+		{% endfor %}
+		</table>
+	{% endfor %}
 </div>
 
 {% endblock %}

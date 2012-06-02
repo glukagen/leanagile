@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'south',
     'core',
     'student',
+    'skill',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 5
