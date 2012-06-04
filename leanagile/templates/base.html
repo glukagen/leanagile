@@ -7,15 +7,31 @@
 		<script src="{{ STATIC_URL }}assets/js/jquery.js"></script>
     	<title>Lean Agile Learning Machine</title>
 		<script>
-			$(function(){				
+			var csrf_token = '{{ csrf_token }}'
+			$(function(){	
+				$('#search').focus(function(){
+					$(this).val('')
+				})	
+				$('#search').keydown(function(){
+					console.log('keydown')
+				})		
+				
+				$('#search').keypress(function(){
+					console.log('keypress')
+				})	
+					
 				$('#btn_remove').click(function(){
 					if(/\/student\/[0-9]+\//.test(document.location.pathname)){
 						if(confirm('Are you sure you want to delete this student? This can not be undone.')){
-							$.get(document.location.pathname + 'remove/', {}, function(o){
-								if(o == '1'){
+							$.get(document.location.pathname + 'remove/', {}, function(id){
+								if(id != '0'){
 									alert('Student was removed successfully');
-									document.location.href = '/'
+									if(id == '-1')
+										document.location.href = '/'
+									else if(id > 0)
+										document.location.href = '/student/' + id + '/'
 								}
+								
 							})
 						}
 					}					
@@ -28,12 +44,14 @@
     </head>
 	<body>
 		<div>
+			<form action="/search">
 			<table id="nav_box" width="100%">
 				<tr>
-					<td><input id="search" value="Search..."/></td>
-					{% if student %}
+					<td><input id="search" name="s" value="Search..."/></td>
+					
 					<td class="nav_btn" valign="top" align="right">
 						<a href="{% url student-add %}"><img src="{{ STATIC_URL }}assets/img/add.png"/></a>
+						{% if student %}
 						<a href="javascript:;" id="btn_remove"><img src="{{ STATIC_URL }}assets/img/remove.png"/></a>
 						{% if prev_student %}
 						<a href="{% url student-profile prev_student %}"><img src="{{ STATIC_URL }}assets/img/prev.png"/></a>
@@ -43,10 +61,12 @@
 						{% endif %}
 						<a href="{% url student-first %}"><img src="{{ STATIC_URL }}assets/img/first.png"/></a>
 						<a href="{% url student-last %}"><img src="{{ STATIC_URL }}assets/img/last.png"/></a>
+						{% endif %}
 					</td>
-					{% endif %}
+					
 				</tr>
 			</table>
+			</form>
 			<div id="container"  class="right" >
 				<table width="100%"><tr><td >
 					{% block content %} {% endblock %}

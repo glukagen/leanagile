@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html"%}
 
 {% block head %}
 <script src="{{ STATIC_URL }}assets/js/jquery.form.js"></script>
@@ -6,5 +6,11 @@
 {% endblock %}
 
 {% block content %}
-{% include 'student/student-data.html'%}
+	{% for student in students %}
+		<hr />
+		<p>
+			{% include 'student/student-data.html'%}
+		
+		</p>
+	{% endfor %}
 {% endblock %}

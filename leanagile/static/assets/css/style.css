@@ -22,11 +22,11 @@ textarea{
 	border:1px solid black;
 }
 
-#profile_details tr{
+.profile_details tr{
 	height: 100px;
 }
 
-#profile_details td{
+.profile_details td{
 	padding:10px;
 }
 
@@ -38,7 +38,7 @@ textarea{
 	padding:10px;
 }
 
-#skills_table td{
+.skills_table td{
 	padding:5px;
 }
 

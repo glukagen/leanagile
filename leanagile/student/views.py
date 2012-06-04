@@ -76,25 +76,26 @@ def profile(request, id):
     student = get_object_or_404(Student, pk=id)
     next_student = next(student)
     prev_student = prev(student)
-    categories = Category.objects.all()
-    for category in categories:
-        category.our_tracks = []
-        for track in category.tracks.all():
-            category.our_tracks.append(track)
-            track_index = len(category.our_tracks) - 1   
-            category.our_tracks[track_index].our_skills = []
-            for skill in category.our_tracks[track_index].skills.all():
-                status = student.statuses.get(skill=skill)
-                skill.status = status.value
-                skill.status_id = status.id
-                category.our_tracks[track_index].our_skills.append(skill)
+    student.levels = ProgressLevel.objects.all()
+    status_is_set = False
+    for level in student.levels:
+        if status_is_set:
+            level.status = 'n'
+        elif level == student.progress_stasus.level:
+            level.status = student.progress_stasus.value
+            status_is_set = True
+        else:
+            level.status = 'd' 
+    
     return locals()
 
 
 def delete(request, id):
     try:
-        Student.objects.get(pk=id).delete()
-        return HttpResponse('1')
+        student = Student.objects.get(pk=id)
+        id = prev(student)
+        student.delete()
+        return HttpResponse(id if id else '-1')
     except:
         return HttpResponse('0')
 

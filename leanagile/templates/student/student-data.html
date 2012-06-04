@@ -1,0 +1,50 @@
+<div style="height:290px;">
+	<div class="left">
+		<form class="edit_form" method="POST" action="{% url student-edit student.id %}">{% csrf_token %}
+			<div class="border_box with_padding">
+				<b><input name="first_name" value="{{ student.user.first_name}}" /><input name="last_name" value="{{ student.user.last_name}}" /></b>
+			</div>
+			
+			<table class="profile_details">
+				<tr>
+					<td rowspan="2"><img src="{{ student.avatar }}" height="120" /></td><td><b>Specialities:</b></td>
+					<td><textarea name="specialities" >{{ student.specialities }}</textarea></td>
+				</tr>
+				<tr>
+					<td><b>About Me:</b></td>
+					<td><textarea name="about_me">{{ student.about_me }}</textarea></td>
+				</tr>
+				<tr style="height:auto;"><td style="padding:0px;"><input type="submit" value="Save" />
+				<img class="loader" style="display:none;" src="{{STATIC_URL}}assets/img/ajaxloader.gif" />
+				</td></tr>
+			</table>
+		</form>
+	</div>
+	<div class="right border_box with_padding" style="width:50%; height:200px">
+		TBD
+	</div>
+</div>
+<div style="height:100px;">
+	{% for level in student.levels %}
+		<a href="javascript:;" class="btn_level" status_id="{{ student.progress_stasus.id }}" level_id="{{ level.id }}" value="{{ level.status }}" color_class="level_{{ level.status }}_status" >
+			<div class="left level_status level_{{ level.status }}_status" >
+				<b>{{ level.name }}</b></div></a>
+	{% endfor %}
+</div>
+<div>
+	{% for category in student.categories %}
+		<h3 align="center">{{ category.name }}</h3>
+		<table class="skills_table" cellpadding="0" cellspacing="0">
+		{% for track in category.our_tracks %}
+				<tr><td><b>{{ track.name }}</b>
+				{% for skill in track.our_skills %}
+					<td valign="top" align="center" style="background-image:url({{STATIC_URL}}assets/img/line.png);  background-repeat: repeat-x; min-width:70px;">
+						<a href="javascript:;" class="skill_circle" status_id="{{ skill.status_id }}"><img src="{{STATIC_URL}}assets/img/{{ skill.status }}_circle.png" /></a><br />
+						<span>{{ skill.name }}</span>
+					</td>
+				{% endfor %}
+				</tr>
+		{% endfor %}
+		</table>
+	{% endfor %}
+</div>

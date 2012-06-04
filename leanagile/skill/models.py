@@ -52,8 +52,8 @@ class ProgressLevel(AbstractCategory):
     pass
 
 
-class ProgressLevelStatus(AbstractStatus):
-    student = models.ForeignKey(Student, related_name='progress_level_stasuses')
+class ProgressStatus(AbstractStatus):
+    student = models.OneToOneField(Student, related_name='progress_stasus')
     level = models.ForeignKey(ProgressLevel)
 
 
@@ -66,7 +66,6 @@ def create_student(sender, instance, created, **kwargs):
     if created:
         for skill in Skill.objects.all():
             SkillStatus(student=instance, skill=skill).save()
-        for level in ProgressLevel.objects.all():
-            ProgressLevelStatus(student=instance, level=level).save()
+        ProgressStatus(student=instance, level=ProgressLevel.objects.all()[:1][0]).save()
             
 models.signals.post_save.connect(create_student, sender=Student)
