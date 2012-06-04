@@ -5,15 +5,14 @@ from django.core.urlresolvers import reverse
 from annoying.decorators import render_to
 from student.forms import StudentForm
 from student.models import Student
-from skill.models import Category
+from skill.models import Category, ProgressLevel
 import uuid
 
 
 @render_to('student/add.html')
 def add(request):
     if request.method == "POST":
-        form = StudentForm(request.POST)
-        print form.is_valid()        
+        form = StudentForm(request.POST)     
         if form.is_valid():
             
             user = User(
@@ -38,9 +37,45 @@ def add(request):
     return locals()
 
 
+
+def edit(request, id):
+    if request.method == "POST":
+        form = StudentForm(request.POST)    
+        if form.is_valid():
+            student = get_object_or_404(Student, pk=id)
+            student.user.first_name = request.POST['first_name']
+            student.user.last_name = request.POST['last_name']
+            student.user.save()
+            
+            student.about_me = request.POST['about_me']
+            student.specialities=request.POST['specialities']
+            student.save()           
+
+            return HttpResponse('1')    
+    return HttpResponse('0')
+
+
+def next(student):
+    try:
+        next_student = Student.objects.filter(full_name__gt=student.full_name)[0]
+    except:
+        return None
+    return next_student.id
+
+
+def prev(student):
+    try:
+        prev_student = Student.objects.filter(full_name__lt=student.full_name)[0]
+    except:
+        return None
+    return prev_student.id
+
+
 @render_to('student/profile.html')
 def profile(request, id):
     student = get_object_or_404(Student, pk=id)
+    next_student = next(student)
+    prev_student = prev(student)
     categories = Category.objects.all()
     for category in categories:
         category.our_tracks = []
@@ -66,7 +101,7 @@ def delete(request, id):
 
 def first(request):
     try:
-        student = Student.objects.order_by('id')[:1][0]
+        student = Student.objects.all()[:1][0]
     except:
         raise Http404
     return redirect(reverse('student-profile', args=(student.id,)))
@@ -74,23 +109,7 @@ def first(request):
 
 def last(request):
     try:
-        student = Student.objects.order_by('-id')[:1][0]
+        student = Student.objects.all().reverse()[:1][0]
     except:
         raise Http404
-    return redirect(reverse('student-profile', args=(student.id,))) 
-
-
-def next(request, id):
-    try:
-        student = Student.objects.filter(id__gt=id).order_by('id')[0]
-    except:
-        raise 404
-    return redirect(reverse('student-profile', args=(student.id,)))
- 
- 
-def prev(request, id):
-    try:
-        student = Student.objects.filter(id__lt=id).order_by('id')[0]
-    except:
-        raise 404
     return redirect(reverse('student-profile', args=(student.id,)))

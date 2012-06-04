@@ -1,6 +1,7 @@
-from annoying.decorators import render_to
+from student.models import Student
+from django.shortcuts import redirect
 
 
-@render_to('index.html')
 def index(request):
-    return locals()
+    return redirect('student-first' if Student.objects.count()  else 'student-add')
+

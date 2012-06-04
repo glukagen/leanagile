@@ -41,3 +41,26 @@ textarea{
 #skills_table td{
 	padding:5px;
 }
+
+.level_status{
+	padding:20px; margin:20px;
+	border:1px solid black;
+	color:red;
+}
+
+.level_n_status{
+	background:grey;
+}
+
+.level_i_status{
+	background:yellow;
+}
+
+.level_d_status{
+	background:green;
+}
+
+.nav_btn a{
+	margin-left:30px;
+	margin-right:30px;
+}

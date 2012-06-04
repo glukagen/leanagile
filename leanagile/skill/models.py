@@ -32,9 +32,7 @@ class Skill(AbstractSkill):
     track = models.ForeignKey(Track, related_name='skills')
 
 
-class SkillStatus(models.Model):
-    skill = models.ForeignKey(Skill)
-    student = models.ForeignKey(Student, related_name='statuses')
+class AbstractStatus(models.Model):
     STATUS_CHOICES = (
         ('n', u'Not started'),
         ('i', u'In progress'),
@@ -42,14 +40,33 @@ class SkillStatus(models.Model):
     )
     value = models.CharField(max_length=1, choices=STATUS_CHOICES, default='n')
     
+    class Meta:
+        abstract = True
+        
     def change(self):
         self.value = 'i' if self.value == 'n' else 'd' if self.value == 'i' else 'n'
         self.save()
+
+
+class ProgressLevel(AbstractCategory):
+    pass
+
+
+class ProgressLevelStatus(AbstractStatus):
+    student = models.ForeignKey(Student, related_name='progress_level_stasuses')
+    level = models.ForeignKey(ProgressLevel)
+
+
+class SkillStatus(AbstractStatus):
+    skill = models.ForeignKey(Skill)
+    student = models.ForeignKey(Student, related_name='statuses')
 
 
 def create_student(sender, instance, created, **kwargs):
     if created:
         for skill in Skill.objects.all():
             SkillStatus(student=instance, skill=skill).save()
-
+        for level in ProgressLevel.objects.all():
+            ProgressLevelStatus(student=instance, level=level).save()
+            
 models.signals.post_save.connect(create_student, sender=Student)

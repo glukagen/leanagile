@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
+<script src="{{ STATIC_URL }}assets/js/jquery.form.js"></script>
 <script>
 	var imgs = [
 		'{{STATIC_URL}}assets/img/n_circle.png',
@@ -8,23 +9,60 @@
 		'{{STATIC_URL}}assets/img/d_circle.png',
 		'{{STATIC_URL}}assets/img/n_circle.png'
 	],
+	level_classes = [
+		'level_n_status',
+		'level_i_status',
+		'level_d_status',
+		'level_n_status'
+	],
 	csrf_token = '{{ csrf_token }}',
 	student_id = '{{ student.id }}'		
 	
-	$(function(){
-		$('#btn_next').click(function(){
-			document.location.href = '/student/' + student_id + '/next/' 
+	$(function(){	
+		$('#edit_form').submit(function(){
+			if($.trim($('#first_name').val()) == ''){
+				alert('Please enter first name')
+				return false
+			}
+			
+			if($.trim($('#last_name').val()) == ''){
+				alert('Please enter last name')
+				return false
+			}
+			
+			if($.trim($('#specialities').val()) == ''){
+				alert('Please enter specialities')
+				return false
+			}
+			
+			$('#loader').show()
+			$(this).ajaxSubmit({
+				success: function(id){
+					$('#loader').hide()
+					alert('Student was successfully updated')
+				}
+			})
+			return false
 		})
-		$('#btn_prev').click(function(){
-			document.location.href = '/student/' + student_id + '/prev/' 
-		})
-		
+						
 		$('.skill_circle').click(function(){
 			var index = $.inArray($(this).find('img').attr('src'), imgs)
 			$(this).find('img').attr('src', imgs[index+1])
 			
 			$.post('/skill/change_status/' + $(this).attr('status_id') + '/', {csrfmiddlewaretoken:csrf_token}, function(o){
-				console.log(o)
+			})
+		})
+		
+		$('.btn_level').click(function(){
+			var index = $.inArray($(this).attr('color_class'), level_classes)
+			var div = $(this).find('div')
+			for(i in level_classes)
+				div.removeClass(level_classes[i])
+			
+			div.addClass(level_classes[index+1])
+			$(this).attr('color_class', level_classes[index+1])
+			
+			$.post('/skill/change_progress_status/' + $(this).attr('status_id') + '/', {csrfmiddlewaretoken:csrf_token}, function(o){
 			})
 		})
 	})
@@ -32,34 +70,47 @@
 {% endblock %}
 
 {% block content %}
-<div style="height:300px;">
+<div style="height:290px;">
 	<div class="left">
-		<div class="border_box with_padding">
-			<b>{{ student.user.get_full_name }}</b>
-		</div>
-		<table id="profile_details">
-			<tr>
-				<td rowspan="2"><img src="{{ student.avatar }}" width="200" /></td><td><b>Specialities:</b></td>
-				<td><div class="border_box with_padding" >{{ student.specialities }}</div></td>
-			</tr>
-			<tr>
-				<td><b>About Me:</b></td>
-				<td><div class="border_box with_padding" >{{ student.about_me }}</div></td>
-			</tr>
-		</table>
+		<form id="edit_form" method="POST" action="{% url student-edit student.id %}">{% csrf_token %}
+			<div class="border_box with_padding">
+				<b><input id="first_name" name="first_name" value="{{ student.user.first_name}}" /><input id="last_name" name="last_name" value="{{ student.user.last_name}}" /></b>
+			</div>
+			
+			<table id="profile_details">
+				<tr>
+					<td rowspan="2"><img src="{{ student.avatar }}" height="120" /></td><td><b>Specialities:</b></td>
+					<td><textarea name="specialities" id="specialities">{{ student.specialities }}</textarea></td>
+				</tr>
+				<tr>
+					<td><b>About Me:</b></td>
+					<td><textarea name="about_me">{{ student.about_me }}</textarea></td>
+				</tr>
+				<tr style="height:auto;"><td style="padding:0px;"><input type="submit" value="Save" />
+				<img id="loader" style="display:none;" src="{{STATIC_URL}}assets/img/ajaxloader.gif" />
+				</td></tr>
+			</table>
+		</form>
 	</div>
 	<div class="right border_box with_padding" style="width:50%; height:200px">
 		TBD
+	</div>
 </div>
+<div style="height:100px;">
+	{% for status in student.progress_level_stasuses.all %}
+		<a href="javascript:;" class="btn_level" status_id="{{ status.id }}" color_class="level_{{ status.value }}_status" >
+			<div class="left level_status level_{{ status.value }}_status" >
+				<b>{{ status.level.name }}</b></div></a>
+	{% endfor %}
 </div>
 <div>
 	{% for category in categories %}
 		<h3 align="center">{{ category.name }}</h3>
-		<table id="skills_table">
+		<table id="skills_table" cellpadding="0" cellspacing="0">
 		{% for track in category.our_tracks %}
 				<tr><td><b>{{ track.name }}</b>
 				{% for skill in track.our_skills %}
-					<td valign="top" align="center">
+					<td valign="top" align="center" style="background-image:url({{STATIC_URL}}assets/img/line.png);  background-repeat: repeat-x; min-width:70px;">
 						<a href="javascript:;" class="skill_circle" status_id="{{ skill.status_id }}"><img src="{{STATIC_URL}}assets/img/{{ skill.status }}_circle.png" /></a><br />
 						<span>{{ skill.name }}</span>
 					</td>

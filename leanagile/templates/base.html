@@ -31,14 +31,20 @@
 			<table id="nav_box" width="100%">
 				<tr>
 					<td><input id="search" value="Search..."/></td>
-					<td>
-						<a href="{% url student-add %}"><button id="btn_add"> + </button></a>
-						<button id="btn_remove"> - </button>
-						<button id="btn_prev"> &lt; </button>
-						<button id="btn_next"> &gt; </button>
-						<a href="{% url student-first %}"><button id="btn_first"> &lt;&lt; </button></a>
-						<a href="{% url student-last %}"><button id="btn_last"> &gt;&gt; </button></a>
+					{% if student %}
+					<td class="nav_btn" valign="top" align="right">
+						<a href="{% url student-add %}"><img src="{{ STATIC_URL }}assets/img/add.png"/></a>
+						<a href="javascript:;" id="btn_remove"><img src="{{ STATIC_URL }}assets/img/remove.png"/></a>
+						{% if prev_student %}
+						<a href="{% url student-profile prev_student %}"><img src="{{ STATIC_URL }}assets/img/prev.png"/></a>
+						{% endif %}
+						{% if next_student %}
+						<a href="{% url student-profile next_student %}"><img src="{{ STATIC_URL }}assets/img/next.png"/></a>
+						{% endif %}
+						<a href="{% url student-first %}"><img src="{{ STATIC_URL }}assets/img/first.png"/></a>
+						<a href="{% url student-last %}"><img src="{{ STATIC_URL }}assets/img/last.png"/></a>
 					</td>
+					{% endif %}
 				</tr>
 			</table>
 			<div id="container"  class="right" >

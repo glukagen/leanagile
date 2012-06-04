@@ -1,5 +1,5 @@
 from django.contrib import admin
-from skill.models import Skill, Track, Category
+from skill.models import Skill, Track, Category, ProgressLevel
 
 
 class TrackAdmin(admin.ModelAdmin):
@@ -12,3 +12,4 @@ class SkillAdmin(admin.ModelAdmin):
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Track, TrackAdmin)
 admin.site.register(Category)
+admin.site.register(ProgressLevel)

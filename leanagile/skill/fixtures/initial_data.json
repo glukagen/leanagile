@@ -1,0 +1,866 @@
+[
+    {
+        "pk": 1,
+        "model": "skill.category",
+        "fields": {
+            "name": "Kanban"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "skill.category",
+        "fields": {
+            "name": "Agile"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "skill.track",
+        "fields": {
+            "category": 1,
+            "name": "Operate",
+            "description": ""
+        }
+    },
+    {
+        "pk": 2,
+        "model": "skill.track",
+        "fields": {
+            "category": 1,
+            "name": "Invent",
+            "description": ""
+        }
+    },
+    {
+        "pk": 3,
+        "model": "skill.track",
+        "fields": {
+            "category": 1,
+            "name": "Innovate",
+            "description": ""
+        }
+    },
+    {
+        "pk": 4,
+        "model": "skill.track",
+        "fields": {
+            "category": 1,
+            "name": "Manage",
+            "description": ""
+        }
+    },
+    {
+        "pk": 5,
+        "model": "skill.track",
+        "fields": {
+            "category": 1,
+            "name": "Own",
+            "description": ""
+        }
+    },
+    {
+        "pk": 6,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Requirements Analysis",
+            "description": ""
+        }
+    },
+    {
+        "pk": 7,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Agile Modeling",
+            "description": ""
+        }
+    },
+    {
+        "pk": 8,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Domain Driver",
+            "description": ""
+        }
+    },
+    {
+        "pk": 9,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Pair Programming",
+            "description": ""
+        }
+    },
+    {
+        "pk": 10,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Test Driven Development",
+            "description": ""
+        }
+    },
+    {
+        "pk": 11,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Clean Code",
+            "description": ""
+        }
+    },
+    {
+        "pk": 12,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Build Automation",
+            "description": ""
+        }
+    },
+    {
+        "pk": 13,
+        "model": "skill.track",
+        "fields": {
+            "category": 2,
+            "name": "Configuration Management",
+            "description": ""
+        }
+    },
+    {
+        "pk": 1,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Participate",
+            "description": ""
+        }
+    },
+    {
+        "pk": 2,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Transparency",
+            "description": ""
+        }
+    },
+    {
+        "pk": 3,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Relay",
+            "description": ""
+        }
+    },
+    {
+        "pk": 4,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Flow",
+            "description": ""
+        }
+    },
+    {
+        "pk": 5,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Pinch Hitting",
+            "description": ""
+        }
+    },
+    {
+        "pk": 6,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Brainstorm",
+            "description": ""
+        }
+    },
+    {
+        "pk": 7,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Improve",
+            "description": ""
+        }
+    },
+    {
+        "pk": 8,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Lead",
+            "description": ""
+        }
+    },
+    {
+        "pk": 9,
+        "model": "skill.skill",
+        "fields": {
+            "track": 1,
+            "name": "Perfect",
+            "description": ""
+        }
+    },
+    {
+        "pk": 10,
+        "model": "skill.skill",
+        "fields": {
+            "track": 2,
+            "name": "Design",
+            "description": ""
+        }
+    },
+    {
+        "pk": 11,
+        "model": "skill.skill",
+        "fields": {
+            "track": 2,
+            "name": "Enhance",
+            "description": ""
+        }
+    },
+    {
+        "pk": 12,
+        "model": "skill.skill",
+        "fields": {
+            "track": 2,
+            "name": "Optimize",
+            "description": ""
+        }
+    },
+    {
+        "pk": 13,
+        "model": "skill.skill",
+        "fields": {
+            "track": 3,
+            "name": "Optimize",
+            "description": ""
+        }
+    },
+    {
+        "pk": 14,
+        "model": "skill.skill",
+        "fields": {
+            "track": 3,
+            "name": "Enhance",
+            "description": ""
+        }
+    },
+    {
+        "pk": 15,
+        "model": "skill.skill",
+        "fields": {
+            "track": 3,
+            "name": "Design",
+            "description": ""
+        }
+    },
+    {
+        "pk": 16,
+        "model": "skill.skill",
+        "fields": {
+            "track": 4,
+            "name": "Analyze",
+            "description": ""
+        }
+    },
+    {
+        "pk": 17,
+        "model": "skill.skill",
+        "fields": {
+            "track": 4,
+            "name": "Direct",
+            "description": ""
+        }
+    },
+    {
+        "pk": 18,
+        "model": "skill.skill",
+        "fields": {
+            "track": 4,
+            "name": "Facilate",
+            "description": ""
+        }
+    },
+    {
+        "pk": 19,
+        "model": "skill.skill",
+        "fields": {
+            "track": 4,
+            "name": "Steer",
+            "description": ""
+        }
+    },
+    {
+        "pk": 20,
+        "model": "skill.skill",
+        "fields": {
+            "track": 5,
+            "name": "Synchronize",
+            "description": ""
+        }
+    },
+    {
+        "pk": 21,
+        "model": "skill.skill",
+        "fields": {
+            "track": 5,
+            "name": "Align",
+            "description": ""
+        }
+    },
+    {
+        "pk": 22,
+        "model": "skill.skill",
+        "fields": {
+            "track": 5,
+            "name": "Strategy",
+            "description": ""
+        }
+    },
+    {
+        "pk": 23,
+        "model": "skill.skill",
+        "fields": {
+            "track": 5,
+            "name": "Partner",
+            "description": ""
+        }
+    },
+    {
+        "pk": 24,
+        "model": "skill.skill",
+        "fields": {
+            "track": 5,
+            "name": "Innovate",
+            "description": ""
+        }
+    },
+    {
+        "pk": 25,
+        "model": "skill.skill",
+        "fields": {
+            "track": 6,
+            "name": "Contributor",
+            "description": ""
+        }
+    },
+    {
+        "pk": 26,
+        "model": "skill.skill",
+        "fields": {
+            "track": 6,
+            "name": "Story Analyst",
+            "description": ""
+        }
+    },
+    {
+        "pk": 27,
+        "model": "skill.skill",
+        "fields": {
+            "track": 6,
+            "name": "Supplementor",
+            "description": ""
+        }
+    },
+    {
+        "pk": 28,
+        "model": "skill.skill",
+        "fields": {
+            "track": 6,
+            "name": "Technical",
+            "description": ""
+        }
+    },
+    {
+        "pk": 29,
+        "model": "skill.skill",
+        "fields": {
+            "track": 6,
+            "name": "Specifier",
+            "description": ""
+        }
+    },
+    {
+        "pk": 30,
+        "model": "skill.skill",
+        "fields": {
+            "track": 6,
+            "name": "Automator",
+            "description": ""
+        }
+    },
+    {
+        "pk": 31,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Collaborative",
+            "description": ""
+        }
+    },
+    {
+        "pk": 32,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Focused",
+            "description": ""
+        }
+    },
+    {
+        "pk": 33,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Responsibility",
+            "description": ""
+        }
+    },
+    {
+        "pk": 34,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Iterative",
+            "description": ""
+        }
+    },
+    {
+        "pk": 35,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Adaptive",
+            "description": ""
+        }
+    },
+    {
+        "pk": 36,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Unifed",
+            "description": ""
+        }
+    },
+    {
+        "pk": 37,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Owner",
+            "description": ""
+        }
+    },
+    {
+        "pk": 38,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Strategic",
+            "description": ""
+        }
+    },
+    {
+        "pk": 39,
+        "model": "skill.skill",
+        "fields": {
+            "track": 7,
+            "name": "Economist",
+            "description": ""
+        }
+    },
+    {
+        "pk": 40,
+        "model": "skill.skill",
+        "fields": {
+            "track": 8,
+            "name": "Analyst",
+            "description": ""
+        }
+    },
+    {
+        "pk": 41,
+        "model": "skill.skill",
+        "fields": {
+            "track": 8,
+            "name": "Modeler",
+            "description": ""
+        }
+    },
+    {
+        "pk": 42,
+        "model": "skill.skill",
+        "fields": {
+            "track": 8,
+            "name": "Designer",
+            "description": ""
+        }
+    },
+    {
+        "pk": 43,
+        "model": "skill.skill",
+        "fields": {
+            "track": 8,
+            "name": "Owner",
+            "description": ""
+        }
+    },
+    {
+        "pk": 44,
+        "model": "skill.skill",
+        "fields": {
+            "track": 9,
+            "name": "Collaborative",
+            "description": ""
+        }
+    },
+    {
+        "pk": 45,
+        "model": "skill.skill",
+        "fields": {
+            "track": 9,
+            "name": "Synchronize",
+            "description": ""
+        }
+    },
+    {
+        "pk": 46,
+        "model": "skill.skill",
+        "fields": {
+            "track": 9,
+            "name": "Pair Programming",
+            "description": ""
+        }
+    },
+    {
+        "pk": 47,
+        "model": "skill.skill",
+        "fields": {
+            "track": 9,
+            "name": "Integrated Team",
+            "description": ""
+        }
+    },
+    {
+        "pk": 48,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Unit",
+            "description": ""
+        }
+    },
+    {
+        "pk": 49,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Specifier",
+            "description": ""
+        }
+    },
+    {
+        "pk": 50,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Architect",
+            "description": ""
+        }
+    },
+    {
+        "pk": 51,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Discplined",
+            "description": ""
+        }
+    },
+    {
+        "pk": 52,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Driven",
+            "description": ""
+        }
+    },
+    {
+        "pk": 53,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Infected",
+            "description": ""
+        }
+    },
+    {
+        "pk": 54,
+        "model": "skill.skill",
+        "fields": {
+            "track": 10,
+            "name": "Commited",
+            "description": ""
+        }
+    },
+    {
+        "pk": 55,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Commentator",
+            "description": ""
+        }
+    },
+    {
+        "pk": 56,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Consistent",
+            "description": ""
+        }
+    },
+    {
+        "pk": 57,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Structure",
+            "description": ""
+        }
+    },
+    {
+        "pk": 58,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Discplined",
+            "description": ""
+        }
+    },
+    {
+        "pk": 59,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Architect",
+            "description": ""
+        }
+    },
+    {
+        "pk": 60,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Fault Tolerant",
+            "description": ""
+        }
+    },
+    {
+        "pk": 61,
+        "model": "skill.skill",
+        "fields": {
+            "track": 11,
+            "name": "Self Describing",
+            "description": ""
+        }
+    },
+    {
+        "pk": 62,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Builder",
+            "description": ""
+        }
+    },
+    {
+        "pk": 63,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Continious",
+            "description": ""
+        }
+    },
+    {
+        "pk": 64,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Dev Quality",
+            "description": ""
+        }
+    },
+    {
+        "pk": 65,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Coordination",
+            "description": ""
+        }
+    },
+    {
+        "pk": 66,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Quality",
+            "description": ""
+        }
+    },
+    {
+        "pk": 67,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Bus Quality",
+            "description": ""
+        }
+    },
+    {
+        "pk": 68,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Date",
+            "description": ""
+        }
+    },
+    {
+        "pk": 69,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Integrator",
+            "description": ""
+        }
+    },
+    {
+        "pk": 70,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Publisher",
+            "description": ""
+        }
+    },
+    {
+        "pk": 71,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Program",
+            "description": ""
+        }
+    },
+    {
+        "pk": 72,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Enterprise",
+            "description": ""
+        }
+    },
+    {
+        "pk": 73,
+        "model": "skill.skill",
+        "fields": {
+            "track": 12,
+            "name": "Startup",
+            "description": ""
+        }
+    },
+    {
+        "pk": 74,
+        "model": "skill.skill",
+        "fields": {
+            "track": 13,
+            "name": "Basic",
+            "description": ""
+        }
+    },
+    {
+        "pk": 75,
+        "model": "skill.skill",
+        "fields": {
+            "track": 13,
+            "name": "Controlled",
+            "description": ""
+        }
+    },
+    {
+        "pk": 76,
+        "model": "skill.skill",
+        "fields": {
+            "track": 13,
+            "name": "Managed",
+            "description": ""
+        }
+    },
+    {
+        "pk": 1,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Trained"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Introduced"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Metnal Model"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Practiced"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Expertise"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Prowess"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "skill.progresslevel",
+        "fields": {
+            "name": "Master"
+        }
+    }
+]
