@@ -8,7 +8,7 @@ def change_status(request, status_id):
         SkillStatus.objects.get(id=status_id).change()
         return HttpResponse('1')
     except:
-        return Httpresponse('0')
+        return HttpResponse('0')
 
 
 def change_progress_status(request, status_id):

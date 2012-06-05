@@ -12,13 +12,6 @@
 				$('#search').focus(function(){
 					$(this).val('')
 				})	
-				$('#search').keydown(function(){
-					console.log('keydown')
-				})		
-				
-				$('#search').keypress(function(){
-					console.log('keypress')
-				})	
 					
 				$('#btn_remove').click(function(){
 					if(/\/student\/[0-9]+\//.test(document.location.pathname)){
@@ -47,7 +40,7 @@
 			<form action="/search">
 			<table id="nav_box" width="100%">
 				<tr>
-					<td><input id="search" name="s" value="Search..."/></td>
+					<td><input id="search" name="s" style="width:300px" value="{% if s %}{{ s }}{% else %}Search...{% endif %}"/></td>
 					
 					<td class="nav_btn" valign="top" align="right">
 						<a href="{% url student-add %}"><img src="{{ STATIC_URL }}assets/img/add.png"/></a>

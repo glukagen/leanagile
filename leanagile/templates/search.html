@@ -6,11 +6,15 @@
 {% endblock %}
 
 {% block content %}
-	{% for student in students %}
-		<hr />
-		<p>
-			{% include 'student/student-data.html'%}
-		
-		</p>
-	{% endfor %}
+	<h2>Search result "{{ s }}"</h2>
+	{% if students %}
+		{% for student in students %}
+			<hr />
+			<p>
+				{% include 'student/student-data.html' %}			
+			</p>
+		{% endfor %}
+	{% else %}
+		<div>No results</div>
+	{% endif %}
 {% endblock %}

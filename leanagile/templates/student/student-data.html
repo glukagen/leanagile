@@ -1,22 +1,24 @@
-<div style="height:290px;">
+<div style="height:260px;">
 	<div class="left">
-		<form class="edit_form" method="POST" action="{% url student-edit student.id %}">{% csrf_token %}
+		<form class="edit_form" id="form_{{ student.id }}" method="POST" action="{% url student-edit student.id %}">{% csrf_token %}
 			<div class="border_box with_padding">
-				<b><input name="first_name" value="{{ student.user.first_name}}" /><input name="last_name" value="{{ student.user.last_name}}" /></b>
+				<b><input name="first_name" class="first_name" student_id="{{ student.id }}" value="{{ student.user.first_name}}" /><input name="last_name" student_id="{{ student.id }}" class="last_name" value="{{ student.user.last_name}}" /></b>
 			</div>
 			
 			<table class="profile_details">
 				<tr>
 					<td rowspan="2"><img src="{{ student.avatar }}" height="120" /></td><td><b>Specialities:</b></td>
-					<td><textarea name="specialities" >{{ student.specialities }}</textarea></td>
+					<td><textarea name="specialities" class="specialities" student_id="{{ student.id }}" >{{ student.specialities }}</textarea></td>
 				</tr>
 				<tr>
 					<td><b>About Me:</b></td>
-					<td><textarea name="about_me">{{ student.about_me }}</textarea></td>
+					<td><textarea name="about_me"  class="about_me" student_id="{{ student.id }}" >{{ student.about_me }}</textarea></td>
 				</tr>
+				<!--
 				<tr style="height:auto;"><td style="padding:0px;"><input type="submit" value="Save" />
 				<img class="loader" style="display:none;" src="{{STATIC_URL}}assets/img/ajaxloader.gif" />
 				</td></tr>
+				-->
 			</table>
 		</form>
 	</div>

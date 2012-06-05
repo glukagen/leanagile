@@ -11,7 +11,17 @@ level_classes = [
 	'level_n_status'
 ]
 
-$(function(){	
+$(function(){
+	
+	function save_data(){
+		$('#form_' + $(this).attr('student_id')).submit()
+	}
+	
+	$('.first_name').keyup(save_data)
+	$('.last_name').keyup(save_data)
+	$('.specialities').keyup(save_data)
+	$('.about_me').keyup(save_data)
+	
 	$('.edit_form').submit(function(){
 		if($.trim($(this).find('[name=first_name]').val()) == ''){
 			alert('Please enter first name')
@@ -23,7 +33,7 @@ $(function(){
 			return false
 		}
 		
-		if($.trim($(this).find('[name=last_name]').val()) == ''){
+		if($.trim($(this).find('[name=specialities]').val()) == ''){
 			alert('Please enter specialities')
 			return false
 		}
@@ -32,7 +42,7 @@ $(function(){
 		$(this).ajaxSubmit({
 			success: function(id){
 				loader.hide()
-				alert('Student was successfully updated')
+				//alert('Student was successfully updated')
 			}
 		})
 		return false
@@ -40,9 +50,10 @@ $(function(){
 					
 	$('.skill_circle').click(function(){
 		var index = $.inArray($(this).find('img').attr('src'), imgs)
-		$(this).find('img').attr('src', imgs[index+1])
-		
-		$.post('/skill/change_status/' + $(this).attr('status_id') + '/', {csrfmiddlewaretoken:csrf_token}, function(o){
+		$(this).find('img').attr('src', imgs[index+1])		
+		$.post('/skill/change_status/' + $(this).attr('status_id') + '/', {
+			csrfmiddlewaretoken: csrf_token
+			}, function(o){
 		})
 	})
 	
