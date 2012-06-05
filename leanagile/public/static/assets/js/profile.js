@@ -73,7 +73,7 @@ $(function(){
 		})
 		
 		var value = self.attr('value')
-		$.get('/skill/change_progress_status/' + self.attr('status_id') + '/', {
+		$.post('/skill/change_progress_status/' + self.attr('status_id') + '/', {
 			csrfmiddlewaretoken:csrf_token,
 			level: self.attr('level_id'),
 			value: value == 'n' ? 'i': value == 'i' ? 'd' : 'n',

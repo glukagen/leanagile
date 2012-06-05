@@ -5,21 +5,21 @@ from student.models import Student
 
 class AbstractCategory(models.Model):
     name = models.CharField(max_length=32)
-    
+
     class Meta:
         abstract = True
-        
+
     def __str__(self):
         return self.name
-    
+
 
 class AbstractSkill(AbstractCategory):
     description = models.CharField(max_length=255, blank=True, null=True)
-    
+
     class Meta:
         abstract = True
 
-        
+
 class Category(AbstractCategory):
     pass
 
@@ -27,7 +27,7 @@ class Category(AbstractCategory):
 class Track(AbstractSkill):
     category = models.ForeignKey(Category, related_name='tracks')
 
-        
+
 class Skill(AbstractSkill):
     track = models.ForeignKey(Track, related_name='skills')
 
@@ -39,12 +39,13 @@ class AbstractStatus(models.Model):
         ('d', u'Done'),
     )
     value = models.CharField(max_length=1, choices=STATUS_CHOICES, default='n')
-    
+
     class Meta:
         abstract = True
-        
+
     def change(self):
-        self.value = 'i' if self.value == 'n' else 'd' if self.value == 'i' else 'n'
+        self.value = 'i' if self.value == 'n' else 'd' \
+            if self.value == 'i' else 'n'
         self.save()
 
 
@@ -66,6 +67,8 @@ def create_student(sender, instance, created, **kwargs):
     if created:
         for skill in Skill.objects.all():
             SkillStatus(student=instance, skill=skill).save()
-        ProgressStatus(student=instance, level=ProgressLevel.objects.all()[:1][0]).save()
-            
+        ProgressStatus(student=instance,
+            level=ProgressLevel.objects.all()[:1][0]).save()
+
+
 models.signals.post_save.connect(create_student, sender=Student)

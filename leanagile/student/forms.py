@@ -7,4 +7,3 @@ class StudentForm(forms.Form):
     photo = forms.FileField(required=False)
     specialities = forms.CharField(widget=forms.Textarea())
     about_me = forms.CharField(widget=forms.Textarea(), required=False)
-    
