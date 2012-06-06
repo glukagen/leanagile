@@ -11,8 +11,7 @@ level_classes = [
 	'level_n_status'
 ]
 
-$(function(){
-	
+$(function(){	
 	function save_data(){
 		$('#form_' + $(this).attr('student_id')).submit()
 	}
@@ -90,5 +89,28 @@ $(function(){
 			value: value == 'n' ? 'i': value == 'i' ? 'd' : 'n',
 			}, function(o){
 		})
+	})
+	
+	$('.btn_show_upload').click(function(){
+		$('.upload_box[student_id=' + $(this).attr('student_id') + ']').modal()
+	})
+	
+	$('.upload_form').submit(function(){
+		var div = $(this).parent()
+		var student_id = div.attr('student_id')
+		var loader = $(this).find('.loader')
+		loader.show()
+		$(this).ajaxSubmit({
+			success: function(avatar){
+				loader.hide()
+				var image =  new Image()
+				image.onload = function(){
+					$('#avatar_' + student_id).attr('src', avatar)
+					$.modal.close()
+				}
+				image.src = avatar
+			}
+		})
+		return false
 	})
 })

@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.conf import settings
 from leanagile.decorators import render_to
 from student.forms import StudentForm
 from student.models import Student
@@ -33,6 +34,15 @@ def add(request):
     else:
         form = StudentForm()
     return locals()
+
+
+def upload_photo(request, id):
+    if not request.FILES.get('photo'):
+        raise Http404
+
+    student = get_object_or_404(Student, pk=id)
+    student.set_photo(request.FILES['photo'])
+    return HttpResponse(student.avatar)
 
 
 def edit(request, id):

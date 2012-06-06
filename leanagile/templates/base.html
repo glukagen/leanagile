@@ -4,7 +4,13 @@
     	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="{{ STATIC_URL }}assets/css/style.css" rel="stylesheet" >
+		<link href="{{ STATIC_URL }}assets/css/basic.css" rel="stylesheet" >
+		<!--[if lt IE 7]>
+		<link href="{{ STATIC_URL }}assets/css/basic_ie.css" rel="stylesheet" >
+		<![endif]-->
 		<script src="{{ STATIC_URL }}assets/js/jquery.js"></script>
+		<script src="{{ STATIC_URL }}assets/js/jquery.simplemodal.1.4.2.min.js"></script>
+		
     	<title>Lean Agile Learning Machine</title>
 		<script>
 			var csrf_token = '{{ csrf_token }}'

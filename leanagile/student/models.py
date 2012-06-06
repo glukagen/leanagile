@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+import os
 
 
 class Student(models.Model):
@@ -20,6 +21,12 @@ class Student(models.Model):
             return "%s%s" % (settings.MEDIA_URL, self.image.name)
         else:
             return '%sassets/img/user-avatar.jpg' % settings.STATIC_URL
+
+    def set_photo(self, image):
+        if self.image:
+            os.remove("%s/%s" % (settings.MEDIA_ROOT, self.image.name))
+        self.image = image
+        self.save()
 
     @property
     def categories(self):

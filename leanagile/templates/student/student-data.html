@@ -1,3 +1,12 @@
+<div class="upload_box" style="display:none;" student_id="{{ student.id }}">
+	<h2>Upload Photo</h2>
+	<p>
+	<form class="upload_form" action="{% url student-upload-photo student.id %}" method="post" enctype="multipart/form-data" >{% csrf_token %}
+		<p>Photo: <input type="file" name="photo" /></p> 
+		<p><input type="submit" /><img class="loader" style="display:none;" src="{{STATIC_URL}}assets/img/ajaxloader.gif" /></p>
+	</form>
+	</p>
+</div>
 <div style="height:260px;">
 	<div class="left">
 		<form class="edit_form" id="form_{{ student.id }}" method="POST" action="{% url student-edit student.id %}">{% csrf_token %}
@@ -7,7 +16,7 @@
 			
 			<table class="profile_details">
 				<tr>
-					<td rowspan="2"><img src="{{ student.avatar }}" height="120" /></td><td><b>Specialities:</b></td>
+					<td rowspan="2"><img src="{{ student.avatar }}" id="avatar_{{ student.id }}" height="120" /><br /><button class="btn_show_upload" student_id="{{ student.id }}" >Upload photo</button></td><td><b>Specialities:</b></td>
 					<td><textarea name="specialities" class="specialities" student_id="{{ student.id }}" >{{ student.specialities }}</textarea></td>
 				</tr>
 				<tr>
@@ -22,7 +31,7 @@
 			</table>
 		</form>
 	</div>
-	<div class="right border_box with_padding" style="width:50%; height:200px">
+	<div class="right border_box with_padding" style="width:30%; height:200px">
 		TBD
 	</div>
 </div>
